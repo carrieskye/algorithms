@@ -1,18 +1,19 @@
+import java.util.Properties;
 import java.util.Scanner;
-
 import dataStructures.UF;
+import dataStructures.UFFactory;
 
 public class Application {
-	
-	
+
 	public static void main(String[] args) {
-		runUF("/data/tinyUF.txt");
+		runUF("/data/tinyUF.txt", "QuickUnionUF");
 	}
-	
-	public static void runUF(String data) {
+
+	public static void runUF(String data, String className) {
 		Scanner fileScanner = new Scanner(Application.class.getResourceAsStream(data));
-		int n = fileScanner.nextInt();
-		UF uf = new UF(n);
+		Properties properties = new Properties();
+		properties.setProperty("n", String.valueOf(fileScanner.nextInt()));
+		UF uf = UFFactory.createUF(className, properties);
 		while (fileScanner.hasNextInt()) {
 			int p = fileScanner.nextInt();
 			int q = fileScanner.nextInt();
@@ -24,5 +25,4 @@ public class Application {
 		fileScanner.close();
 		System.out.println(uf.count() + " components");
 	}
-
 }
