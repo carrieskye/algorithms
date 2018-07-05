@@ -6,7 +6,7 @@ import dataStructures.UFFactory;
 public class Application {
 
 	public static void main(String[] args) {
-		runUF("/data/tinyUF.txt", "QuickUnionUF");
+		runUF("/data/tinyUF.txt", "WeightedQuickUnionUF");
 	}
 
 	public static void runUF(String data, String className) {
